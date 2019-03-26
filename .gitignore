@@ -19,3 +19,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+.amplifyrc
+amplify/#current-cloud-backend
+amplify/.config

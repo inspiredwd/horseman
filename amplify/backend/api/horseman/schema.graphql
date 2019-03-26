@@ -1,0 +1,24 @@
+type Site @model {
+  id: ID!
+  name: String!
+  pages: [Page] @connection(name: "Pages")
+}
+type Page @model @versioned @auth(rules: [
+
+        # Defaults to use the "owner" field.
+        { allow: owner },
+
+        # Authorize the update mutation and both queries. Use `queries: null` to disable auth for queries.
+        { allow: owner, ownerField: "editors", mutations: [update], queries: null }
+  ]) {
+  id: ID!
+  title: String!
+  metaDescription: String
+  locale: String
+  content: String
+  site: Site @connection(name: "Pages")
+  owner: String
+  editors: [String]
+  parent: Page @connection(name: "Children")
+  children: [Page] @connection(name: "Children")
+}
