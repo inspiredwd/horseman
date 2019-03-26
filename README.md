@@ -1,2 +1,2 @@
 # Horseman
-The open source, headless, serverless CMS
+Open source, headless, serverless CMS
